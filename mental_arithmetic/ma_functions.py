@@ -32,21 +32,21 @@ def sr_setup():
 def create_record():
 
     if sys.platform == "linux":
-        if os.path.isdir(f"./mental_arithmetic_saves/{str(datetime.now().strftime('%Y-%m-%d'))}"):
-            save_folder = str(os.getcwd()) + f"./mental_arithmetic_saves/{str(datetime.now().strftime('%Y-%m-%d'))}"
+        if os.path.isdir(f"./saves/{str(datetime.now().strftime('%Y-%m-%d'))}/{master_db.identifier}"):
+            save_folder = str(os.getcwd()) + f"./saves/{str(datetime.now().strftime('%Y-%m-%d'))}/{master_db.identifier}"
         else:
-            os.makedirs(f"./mental_arithmetic_saves/{str(datetime.now().strftime('%Y-%m-%d'))}")
-            save_folder = str(os.getcwd()) + f"./mental_arithmetic_saves/{str(datetime.now().strftime('%Y-%m-%d'))}"
+            os.makedirs(f"./saves/{str(datetime.now().strftime('%Y-%m-%d'))}/{master_db.identifier}")
+            save_folder = str(os.getcwd()) + f"./saves/{str(datetime.now().strftime('%Y-%m-%d'))}/{master_db.identifier}"
 
     if sys.platform == "win32":
-        if os.path.isdir(f".\\mental_arithmetic_saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\"):
-            save_folder = str(os.getcwd()) + f"\\mental_arithmetic_saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\"
+        if os.path.isdir(f".\\saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\{master_db.identifier}\\"):
+            save_folder = str(os.getcwd()) + f".\\saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\{master_db.identifier}\\"
         else:
-            os.makedirs(f".\\mental_arithmetic_saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\")
-            save_folder = str(os.getcwd()) + f"\\mental_arithmetic_saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\"
+            os.makedirs(f".\\saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\{master_db.identifier}\\")
+            save_folder = str(os.getcwd()) + f".\\saves\\{str(datetime.now().strftime('%Y-%m-%d'))}\\{master_db.identifier}\\"
 
     # filename = save_folder + str(datetime.now().strftime("%H-%M-%S") +f'-{identifier}.txt')
-    db.filename = str(save_folder) + str(master_db.identifier) + ".txt"
+    db.filename = str(save_folder) + "mental_arithmetic.txt"
 
     db.file = open(db.filename,"a+")
 
@@ -245,7 +245,7 @@ def Submit(answer, entryWidget):
             entryWidget.delete(0, 'end')
 
         if db.var.get() == 1:
-            db.file.write("Wrong,      Time Stamp: {}\n".format(round(time.time()-db.default_time,2)))
+            db.file.write("Wrong,      Time Stamp: {}\n\n".format(round(time.time()-db.default_time,2)))
             print("Wrong,      Time Stamp: ", round(time.time()-db.default_time,2))
             moveon()
             
@@ -259,7 +259,7 @@ def Submit(answer, entryWidget):
             db.label2.config(text = message)
             entryWidget.delete(0, 'end')
 
-        db.file.write("Correct,   Time Stamp: {}\n".format(round(time.time()-db.default_time,2)))
+        db.file.write("Correct,   Time Stamp: {}\n\n".format(round(time.time()-db.default_time,2)))
         print("Correct,    Time Stamp: ", round(time.time()-db.default_time,2))
         moveon()
 

@@ -2,7 +2,8 @@ from tkinter import *
 from tkinter.font import Font, nametofont
 import variables as db; db.init()
 from mental_arithmetic import ma_gui
-import os, datetime
+import os
+from datetime import datetime
 
 def init(tk_root):
     db.root = tk_root
