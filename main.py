@@ -46,7 +46,7 @@ def main():
     db.Button1 = Button(
         master= db.root, 
         text="Mental Arithmetic Test", 
-        command= partial(s.activate_mental_arith, db.root, s, db.idenWidget),
+        command= partial(s.activate_mental_arith, root, s, db.idenWidget),
         activebackground="blue", 
         activeforeground="white", 
         bg="white", 
@@ -60,7 +60,7 @@ def main():
     db.Button2 = Button(
         master= db.root, 
         text="N-Back Test", 
-        # command=ma_gui.main, 
+        # command=partial(), 
         activebackground="blue", 
         activeforeground="white", 
         bg="white", 
@@ -74,14 +74,14 @@ def main():
     db.Button3 = Button(
         master= db.root, 
         text="Stroop Color Test", 
-        # command=ma_gui.main, 
+        command=partial(s.activate_stroop, root, s, db.idenWidget), 
         activebackground="blue", 
         activeforeground="white", 
         bg="white", 
         fg="black", 
         font=db.Heading,
         width = 50,
-        state = DISABLED
+        state = NORMAL
         )
     db.Button3.grid(row=5, column=0, pady=10, sticky='W')
 

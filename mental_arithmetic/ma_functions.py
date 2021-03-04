@@ -5,9 +5,6 @@ import subprocess
 from tkinter import *
 from mental_arithmetic import ma_variables  as db; 
 
-import sys
-sys.path.append('../')
-
 # Fix Identifier Not Found Error
 import variables as master_db; master_db.init()
 
@@ -197,6 +194,7 @@ def endProgram(event):
 
     db.file.close()
     db.root.destroy()
+    master_db.root.mainloop()
 
 def Submit(answer, entryWidget):
     """ Display the Entry text value. """
@@ -244,10 +242,10 @@ def Submit(answer, entryWidget):
             db.label2.config(text = message)
             entryWidget.delete(0, 'end')
 
-        if db.var.get() == 1:
-            db.file.write("Wrong,      Time Stamp: {}\n\n".format(round(time.time()-db.default_time,2)))
-            print("Wrong,      Time Stamp: ", round(time.time()-db.default_time,2))
-            moveon()
+        # if db.var == 1:
+        db.file.write("Wrong,      Time Stamp: {}\n\n".format(round(time.time()-db.default_time,2)))
+        print("Wrong,      Time Stamp: ", round(time.time()-db.default_time,2))
+        moveon()
             
     else:
         message = ("Correct")

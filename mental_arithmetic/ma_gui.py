@@ -38,7 +38,7 @@ def main(root, s):
     db.checkbox4 = Checkbutton(checks, text="ADDITION", variable=db.var4)
     db.checkbox4.grid(row=2,column=0,padx=10,pady=10,sticky='W')
 
-    db.checkbox5 = Checkbutton(checks, text="SUBSTRACTION", variable=db.var5)
+    db.checkbox5 = Checkbutton(checks, text="SUBTRACTION", variable=db.var5)
     db.checkbox5.grid(row=2,column=1,padx=10,pady=10,sticky='W')
 
     db.checkbox6 = Checkbutton(checks, text="MULTIPLICATION", variable=db.var6)

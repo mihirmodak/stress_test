@@ -1,7 +1,10 @@
 from tkinter import *
 from tkinter.font import Font, nametofont
 import variables as db; db.init()
+
 from mental_arithmetic import ma_gui
+from stroop import stroop_gui
+
 import os
 from datetime import datetime
 
@@ -36,6 +39,16 @@ def activate_mental_arith(root, s, entryWidget):
     db.Button3.destroy()
     save_identifier(entryWidget)
     ma_gui.main(root, s)
+
+def activate_stroop(root, s, entryWidget):
+    db.iden_label.destroy()
+    # db.idenWidget.destroy()
+    db.choice_label.destroy()
+    db.Button1.destroy()
+    db.Button2.destroy()
+    db.Button3.destroy()
+    save_identifier(entryWidget)
+    stroop_gui.main(root, s)
 
 def save_identifier(entryWidget):
     db.identifier = entryWidget.get().strip()

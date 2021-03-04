@@ -1,6 +1,4 @@
 from tkinter import *
-import sys
-sys.path.append('../')
 
 # Fix Identifier Not Found Error
 import variables as master_db; master_db.init()
