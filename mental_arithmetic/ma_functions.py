@@ -14,14 +14,13 @@ def init(ma_root):
     global root
     root = ma_root
     db.init(ma_root)
-
-def sr_setup():
+        
     # implement pip as a subprocess
     if sys.platform == "linux":
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'])
 
     if sys.platform == "win32":
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'PyAudio-0.2.11-cp39-cp39-win_amd64.whl'])
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'resources/PyAudio-0.2.11-cp39-cp39-win_amd64.whl'])
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'speechrecognition~=3.8.1'])
     
     import speech_recognition as sr
@@ -261,3 +260,30 @@ def Submit(answer, entryWidget):
         print("Correct,    Time Stamp: ", round(time.time()-db.default_time,2))
         moveon()
 
+def yeet():
+    try: 
+        print("Minimum energy threshold set to {}".format(r.energy_threshold))
+        while True: # forever and ever
+            answer = one_digit_math() # get a random arithmetic problem #TODO: Change to mental arithmetic function
+            questionAnswered = False
+            while (questionAnswered == False):
+                with m as source: audio = r.listen(source)
+                try:
+                    # recognize speech using Google Speech Recognition
+                    value = r.recognize_google(audio)
+                    try:
+                        user_input = int(value)
+                    except ValueError:
+                        print("I can only understand numbers. Please repeat your answer.")
+                    else:
+                        questionAnswered = True
+                        if (user_input == answer):
+                            print("That's correct! The answer is {}".format(answer))
+                        else:
+                            print("You said {}, but the answer is {}".format(user_input, answer))
+                except sr.UnknownValueError:
+                    print("Oops! Didn't catch that")
+                except sr.RequestError as e:
+                    print("Uh oh! Couldn't request results from Google Speech Recognition service; {0}".format(e))
+    except KeyboardInterrupt:
+        pass

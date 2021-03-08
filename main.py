@@ -3,6 +3,9 @@ from tkinter import *
 from functools import partial
 import variables as db; db.init()
 
+import sys
+sys.path.append('../')
+
 # Set up the window
 global root
 root = Tk()

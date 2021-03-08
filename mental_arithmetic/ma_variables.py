@@ -88,3 +88,11 @@ def init(ma_root):
     global identifier
     global root
     root = ma_root
+
+    global mic
+    global pause_threshold
+    pause_threshold = 0.5
+    global energy_threshold
+    energy_threshold = 200
+    global dynamic_energy_threshold
+    dynamic_energy_threshold = False
